@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from .serializers import ManagerRegistrationSerializer, ManagerSerializer
+from .models import Managers
+
+
+class ManagerRegistrationAPIView(generics.CreateAPIView):
+    serializer_class = ManagerRegistrationSerializer
+
+
+class ManagerRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Managers.objects.all()
+    serializer_class = ManagerSerializer
