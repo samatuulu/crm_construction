@@ -84,14 +84,7 @@ WSGI_APPLICATION = 'source.main.wsgi.application'
 # settings.py
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'construction',
-        'USER': 'postgres',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
-        'PORT': 5432,
-    }
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
 
 DATABASES['default']['CONN_MAX_AGE'] = 600
