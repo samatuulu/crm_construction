@@ -84,7 +84,14 @@ WSGI_APPLICATION = 'source.main.wsgi.application'
 # settings.py
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'da62su942i51v1',
+        'USER': 'zrhqlklmqyzdvf',
+        'PASSWORD': '82a4d8ac7137b8685f0b98a6a3c31a909d1c6ac30c9028d9e499e5cca6ca270e',
+        'HOST': 'ec2-44-194-102-142.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
 }
 
 DATABASES['default']['CONN_MAX_AGE'] = 600
