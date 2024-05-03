@@ -88,12 +88,11 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'construction',
         'USER': 'postgres',
-        'PASSWORD': 'root',
+        'PASSWORD': '123456',
         'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'PORT': 5432,
     }
 }
-
 
 DATABASES['default']['CONN_MAX_AGE'] = 600
 
