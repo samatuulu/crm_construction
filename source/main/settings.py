@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
 
-    'managers.apps.AppConfig',
-    'apartment.apps.AppConfig',
+    'source.managers',
+    'source.apartment',
 ]
 
 MIDDLEWARE = [
