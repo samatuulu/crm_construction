@@ -9,10 +9,12 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+from dotenv import load_dotenv
 import dj_database_url
 import os
 from pathlib import Path
 
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -21,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-xod5#^7cicy8fwjl@bkei*et#=u2ztku$8^rcj-c3!#mpwsb$!'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['crmconstruction.com', 'crmconstruction-a8cfcab89ef3.herokuapp.com']
 
@@ -83,18 +85,24 @@ WSGI_APPLICATION = 'source.main.wsgi.application'
 
 # settings.py
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'da62su942i51v1',
-        'USER': 'zrhqlklmqyzdvf',
-        'PASSWORD': '82a4d8ac7137b8685f0b98a6a3c31a909d1c6ac30c9028d9e499e5cca6ca270e',
-        'HOST': 'ec2-44-194-102-142.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'da62su942i51v1',
+#         'USER': 'zrhqlklmqyzdvf',
+#         'PASSWORD': '82a4d8ac7137b8685f0b98a6a3c31a909d1c6ac30c9028d9e499e5cca6ca270e',
+#         'HOST': 'ec2-44-194-102-142.compute-1.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+#
+# DATABASES['default']['CONN_MAX_AGE'] = 600
 
-DATABASES['default']['CONN_MAX_AGE'] = 600
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL')
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
