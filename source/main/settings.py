@@ -111,6 +111,7 @@ DATABASES = {
         default=config('DATABASE_URL')
     )
 }
+DATABASES['default']['HOST'] = 'ec2-44-194-102-142.compute-1.amazonaws.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
